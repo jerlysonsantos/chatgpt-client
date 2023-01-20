@@ -3,8 +3,8 @@
 
 ## Pre-requisitos.
 1. Primeiramente tenha instalado em sua maquina o `pip`.
-1. Segundo vocẽ irá precisar de uma conta no [https://openai.com/api/](https://openai.com/api/) para criar um API KEy, ela será importante.
-1. Com a API Key em mão você deverá inserir a seguinte variavel no `.bashrc`: `CHATGPT_API_KEY=[API-KEY]`. Em alguns casos irá precisar inserir no `.bash_profile` ou se usar zsh no `.zshrc` .
+1. Segundo você irá precisar de uma conta no [https://openai.com/api/](https://openai.com/api/) para gerar um API Key, ela será importante.
+1. Com a API Key em mãos você deverá inserir a seguinte variável no `.bashrc`: `CHATGPT_API_KEY=[API-KEY]`. Em alguns casos irá precisar inserir no `.bash_profile` ou se usar zsh no `.zshrc` .
 
 
 ## Instalação e execução
