@@ -6,11 +6,14 @@ then
     exit
 fi
 
-echo -n "Please enter a chatgpt api key: "
-read CHATGPT_API_KEY
+if [ -z "$1" ]
+then
+    echo "[!] Please insert a chatgpt api key"
+    exit
+fi
 
-echo "CHATGPT_API_KEY=$CHATGPT_API_KEY" >> $HOME/.bashrc
-echo "CHATGPT_API_KEY=$CHATGPT_API_KEY" >> $HOME/.bash_profile
+echo "CHATGPT_API_KEY=$1" >> $HOME/.bashrc
+echo "CHATGPT_API_KEY=$1" >> $HOME/.bash_profile
 
 pip install openai
 
