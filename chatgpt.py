@@ -1,5 +1,8 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 
+from time import sleep
+from random import uniform
+import sys
 import os
 import json
 import openai
@@ -14,21 +17,35 @@ def do_json(prompt, api_key):
     )
     return completions.choices[0].text
 
-api_key = ""
-try:
-     api_key = os.environ["CHATGPT_API_KEY"]
-except KeyError:
-    print("Missing CHATGPT_API_KEY")
-    exit(1)
+def typewritter_effect(text):
+    green = "\033[0;32m"
 
-while True:
+    for x in text:
+        print(green + x, end='')
+        sys.stdout.flush()
+        sleep(uniform(0, 0.1))
+    print('\n')
+
+def __main__():
+    white = "\033[0;37m"
+    api_key = ""
     try:
-        prompt = input("> ")
-        if prompt:
-            if prompt == 'exit':
-                break
+         api_key = os.environ["CHATGPT_API_KEY"]
+    except KeyError:
+        print("Missing CHATGPT_API_KEY")
+        exit(1)
 
-            text = do_json(prompt, api_key)
-            print(text)
-    except EOFError:
-        break
+    print("Welcome to ChatGPT\nType \"exit\" if you want to quit\n")
+    while True:
+        try:
+            prompt = input(white + "> ")
+            if prompt:
+                if prompt == 'exit':
+                    break
+
+                text = do_json(prompt, api_key)
+                typewritter_effect(text)
+        except EOFError:
+            break
+
+__main__()
