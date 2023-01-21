@@ -10,4 +10,4 @@ pip install openai
 
 curl -L -o ~/.local/bin/chatgpt https://raw.githubusercontent.com/jerlysonsantos/chatgpt-client/main/chatgpt.py 
 
-chmod 777 ~/.local/bin/chatgpt
+chmod +x ~/.local/bin/chatgpt
