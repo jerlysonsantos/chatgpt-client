@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from time import sleep
 from random import uniform
@@ -26,6 +26,13 @@ def typewritter_effect(text):
         sleep(uniform(0, 0.1))
     print('\n')
 
+def terminal_return(api_key):
+    prompt = sys.argv[2:]
+    text = " ".join(str(x) for x in prompt)
+    chat_return = do_json(text, api_key)
+    sys.stdout.write(chat_return)
+    exit(1)
+
 def __main__():
     white = "\033[0;37m"
     api_key = ""
@@ -34,6 +41,9 @@ def __main__():
     except KeyError:
         print("Missing CHATGPT_API_KEY")
         exit(1)
+ 
+    if sys.argv[1] == "-c":
+        terminal_return(api_key)    
 
     print("Welcome to ChatGPT\nType \"exit\" if you want to quit\n")
     while True:
