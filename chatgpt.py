@@ -33,18 +33,8 @@ def terminal_return(api_key):
     sys.stdout.write(chat_return)
     exit(1)
 
-def __main__():
+def aplication(api_key):
     white = "\033[0;37m"
-    api_key = ""
-    try:
-         api_key = os.environ["CHATGPT_API_KEY"]
-    except KeyError:
-        print("Missing CHATGPT_API_KEY")
-        exit(1)
- 
-    if sys.argv[1] == "-c":
-        terminal_return(api_key)    
-
     print("Welcome to ChatGPT\nType \"exit\" if you want to quit\n")
     while True:
         try:
@@ -58,4 +48,20 @@ def __main__():
         except EOFError:
             break
 
+
+def __main__():
+    api_key = ""
+    try:
+         api_key = os.environ["CHATGPT_API_KEY"]
+    except KeyError:
+        print("Missing CHATGPT_API_KEY")
+        exit(1)
+
+    if not sys.argv[1:]:
+        aplication(api_key)
+
+    if sys.argv and sys.argv[1] == "-c":
+        terminal_return(api_key)    
+
+    
 __main__()
